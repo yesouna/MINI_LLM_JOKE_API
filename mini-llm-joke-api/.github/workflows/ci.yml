@@ -1,1 +1,26 @@
 name: CI Pipeline
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          pip install -r env_fujutsu_mini_llm_joke_api.yml
+          pip install pytest flake8
+      - name: Run pytest
+        run: |
+          pytest tests/ -v
+      - name: Run flake8 linting
+        run: |
+          flake8 app/ tests/ --count --show-source --statistics
