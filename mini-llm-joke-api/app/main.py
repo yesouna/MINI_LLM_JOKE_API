@@ -80,7 +80,7 @@ async def generate_text(request: FormatRequest):
         inputs = tokenizer(request.prompt, return_tensors="pt").to(device)
         
         """
-        # I-HSI: Generate inference using hugging face generate, still pytorch underneath 
+        # Generate inference using hugging face generate, still pytorch underneath 
         outputs = model.generate(
             inputs.input_ids,
             max_new_tokens=int(MAX_RESPONSE_TOKENS), 
@@ -98,7 +98,7 @@ async def generate_text(request: FormatRequest):
             with torch.no_grad():
                 logits = model(outputs).logits[:, -1, :]  # Get last token logits
 
-            # similar to as in hf temperature =0.1
+            # similar to as in hf temperature =0.7
             logits = logits / 0.7
             probs = torch.softmax(logits, dim=-1)
 

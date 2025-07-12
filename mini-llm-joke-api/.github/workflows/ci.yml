@@ -10,17 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Install Miniconda
+        uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: "3.10"
-      - name: Install dependencies
+          auto-update-conda: true
+          auto-activate-base: false
+      - name: Create and activate conda environment
         run: |
-          pip install -r env_fujutsu_mini_llm_joke_api.yml
-          pip install pytest flake8
+          conda env create -f env_mini_llm_joke_api.yml
+          conda activate env_mini-llm-joke-api
+        shell: bash -l {0}
       - name: Run pytest
         run: |
+          conda activate env_mini-llm-joke-api
           pytest tests/ -v
+        shell: bash -l {0}
       - name: Run flake8 linting
         run: |
+          conda activate env_mini-llm-joke-api
           flake8 app/ tests/ --count --show-source --statistics
+        shell: bash -l {0}

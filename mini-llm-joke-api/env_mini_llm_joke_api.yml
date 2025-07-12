@@ -1,4 +1,4 @@
-name: env_fujitsu_mini-llm-joke-api
+name: env_mini-llm-joke-api
 channels:
   - pytorch
   - anaconda
@@ -262,5 +262,5 @@ dependencies:
   - zstd=1.5.6=h138b38a_0
   - pip:
       - pip==25.1.1
-#prefix: /Users/yassine/miniconda3/envs/env_fujitsu_mini-llm-joke-api
-# I-HSI: you can put your own prefix here after installing minniconda3
+# you can put your own prefix here after installing minniconda3
+#prefix:

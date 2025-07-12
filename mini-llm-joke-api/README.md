@@ -1,10 +1,9 @@
 ###### mini_llm_joke_api: CPU ONLY VERSION with hf and pytorch | no cuda nor vllm
 
 #### create conda environemnt with yml file
-conda env create -f env_fujutsu_mini_llm_joke_api.yml
-conda activate env_fujitsu_mini-llm-joke-api
+conda env create -f env_mini-llm-joke-api.yml
+conda activate env_mini-llm-joke-api
 
-[plz note that conda env yml file has more packages for gradio UI and speech transcription, for a UI part that I did not finish yet]
 
 
 #### change .env 
